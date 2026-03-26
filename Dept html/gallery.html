@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - CS Dept DAC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .page-header {
+      background-color: var(--primary);
+      padding: 6rem 0 3rem;
+      text-align: center;
+      color: white;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: var(--br-md);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-title {
+      color: white;
+      font-size: 1.25rem;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-title {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <div style="width: 35px; height: 35px; background-color: var(--secondary); border-radius: 4px; display:flex; align-items:center; justify-content:center; color:#2b2623;">
+          <i class="fas fa-university"></i>
+        </div>
+        <span style="letter-spacing: 1px;">CS DEPT</span>
+      </div>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="courses.html" class="nav-link">Courses</a></li>
+        <li><a href="faculty.html" class="nav-link">Faculty</a></li>
+        <li><a href="students.html" class="nav-link">Student Portal</a></li>
+        <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+        <li><a href="notices.html" class="nav-link">Notices</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <li class="nav-actions mobile-only">
+           <div id="authContainerMobile"></div>
+           <button class="theme-toggle" id="themeToggleMobile"><i class="fas fa-moon"></i> Theme</button>
+        </li>
+      </ul>
+
+      <div class="nav-actions desktop-only">
+        <div id="authContainerDesktop"></div>
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1 class="animate-on-scroll">Event Gallery</h1>
+      <p class="text-muted mt-md animate-on-scroll" style="color:#cbd5e1;">A visual journey through our department's events, achievements, and everyday academic life.</p>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Injected via JS -->
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const galleryData = DB.getGallery() || [];
+      const grid = document.getElementById('galleryGrid');
+      
+      if (galleryData.length === 0) {
+        grid.innerHTML = '<p class="text-center text-muted" style="grid-column: 1/-1;">No photos in the gallery.</p>';
+        return;
+      }
+      
+      let html = '';
+      galleryData.forEach((img, idx) => {
+        html += `
+          <div class="gallery-item animate-on-scroll" style="transition-delay: ${idx * 0.1}s">
+            <img src="${img.url}" alt="${img.title}">
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">${img.title}</h3>
+            </div>
+          </div>
+        `;
+      });
+      
+      grid.innerHTML = html;
+    });
+
+    const mobileToggle = document.getElementById('themeToggleMobile');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+          const themeToggle = document.getElementById('themeToggle');
+          if(themeToggle) themeToggle.click();
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Signup - CS Dept DAC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-secondary);
+      padding: var(--spacing-md);
+    }
+    
+    .auth-card {
+      background-color: var(--card-bg);
+      padding: var(--spacing-xl);
+      border-radius: var(--br-lg);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .auth-header { text-align: center; margin-bottom: var(--spacing-lg); }
+    .form-group { margin-bottom: var(--spacing-md); }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size:0.9rem;}
+    
+    .row { display: flex; gap: 1rem; }
+    .col { flex: 1; }
+    
+    .auth-btn { width: 100%; margin-top: var(--spacing-md); }
+    .error-msg {
+      color: var(--danger);
+      background-color: rgba(179, 82, 73, 0.1);
+      padding: 0.75rem;
+      border-radius: var(--br-md);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .success-msg {
+      color: var(--success);
+      background-color: rgba(96, 128, 100, 0.1);
+      padding: 0.75rem;
+      border-radius: var(--br-md);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1 style="color:var(--primary);">Student Registration</h1>
+        <p class="text-muted mt-sm" style="font-size:0.9rem;">Create an account to access study resources and internal notices. Accounts require Admin approval.</p>
+      </div>
+      
+      <div id="authMessage" class="hidden"></div>
+      
+      <form id="signupForm">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="regName" class="form-control" required placeholder="e.g. John Doe">
+        </div>
+        
+        <div class="row">
+          <div class="form-group col">
+            <label>Course</label>
+            <select id="regCourse" class="form-control" required>
+              <option value="" disabled selected>Select...</option>
+              <option value="UG">B.Sc. CS (UG)</option>
+              <option value="PG">M.Sc. CS (PG)</option>
+            </select>
+          </div>
+          <div class="form-group col">
+            <label>Year</label>
+            <select id="regYear" class="form-control" required>
+              <option value="" disabled selected>Select...</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year (UG only)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Username (Roll No. or ID)</label>
+          <input type="text" id="regUsername" class="form-control" required placeholder="Pick a unique username">
+        </div>
+        
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="regPassword" class="form-control" required placeholder="Create a password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary auth-btn">Register Account</button>
+      </form>
+      
+      <div style="text-align:center; margin-top:1.5rem; font-size:0.9rem;">
+        Already registered? <a href="login.html" style="color:var(--secondary); font-weight:600; text-decoration:underline;">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

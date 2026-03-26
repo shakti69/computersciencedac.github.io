@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - CS Dept DAC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .page-header {
+      background-color: var(--primary);
+      padding: 6rem 0 3rem;
+      text-align: center;
+      color: white;
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80') center/cover;
+    }
+    
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      border-radius: var(--br-lg);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: var(--spacing-xl);
+    }
+    
+    .card {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: var(--br-lg);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--secondary);
+    }
+    
+    .card h3 { color: var(--primary); margin-bottom: 1rem; display:flex; align-items:center; gap:0.5rem;}
+    [data-theme="dark"] .card h3 { color: var(--secondary); }
+    
+    @media (max-width: 768px) {
+      .about-section, .mv-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <div style="width: 35px; height: 35px; background-color: var(--secondary); border-radius: 4px; display:flex; align-items:center; justify-content:center; color:#2b2623;">
+          <i class="fas fa-university"></i>
+        </div>
+        <span style="letter-spacing: 1px;">CS DEPT</span>
+      </div>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="courses.html" class="nav-link">Courses</a></li>
+        <li><a href="faculty.html" class="nav-link">Faculty</a></li>
+        <li><a href="students.html" class="nav-link">Student Portal</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="notices.html" class="nav-link">Notices</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <li class="nav-actions mobile-only">
+           <div id="authContainerMobile"></div>
+           <button class="theme-toggle" id="themeToggleMobile"><i class="fas fa-moon"></i> Theme</button>
+        </li>
+      </ul>
+
+      <div class="nav-actions desktop-only">
+        <div id="authContainerDesktop"></div>
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1 class="animate-on-scroll">About The Department</h1>
+      <p class="text-muted mt-md animate-on-scroll" style="color:#cbd5e1; max-width:600px; margin:auto;">Pioneering Academic Excellence in Computation Since 1995</p>
+    </div>
+  </header>
+
+  <main class="section container">
+    
+    <div class="about-section">
+      <div class="animate-on-scroll">
+        <h2 style="font-size: 2.25rem; margin-bottom: 1.5rem;">Department History</h2>
+        <p class="text-muted" style="margin-bottom: 1rem;">The Department of Computer Science at Dhenkanal Autonomous College was established in the year 1995 with the vision of importing quality education in the field of information technology to the students of this historical region.</p>
+        <p class="text-muted" style="margin-bottom: 1.5rem;">Over the decades, the department has grown significantly, fostering a culture of innovation, rigorous technical training, and ethical leadership. Our alumni are currently placed in reputed MNCs across the globe, contributing critically to the digital domain.</p>
+        <div style="display:flex; gap: 2rem;">
+          <div>
+            <span style="font-size:2rem; font-weight:800; color:var(--accent);">25+</span>
+            <p class="text-muted">Years Exp.</p>
+          </div>
+          <div>
+            <span style="font-size:2rem; font-weight:800; color:var(--accent);">500+</span>
+            <p class="text-muted">Alumni</p>
+          </div>
+          <div>
+            <span style="font-size:2rem; font-weight:800; color:var(--accent);">100%</span>
+            <p class="text-muted">Assistance</p>
+          </div>
+        </div>
+      </div>
+      <div class="animate-on-scroll" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="Students in discussion" class="about-image">
+      </div>
+    </div>
+
+    <div class="mv-grid">
+      <div class="card animate-on-scroll">
+        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+        <p class="text-muted">To be a globally recognized center of excellence in computer science education and research, empowering learners with cutting-edge technological competencies suited to solve real-world problems and enhance the socioeconomic fabric of society.</p>
+      </div>
+      <div class="card animate-on-scroll" style="transition-delay: 0.2s;">
+        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+        <ul style="list-style:disc; margin-left:1.5rem; color:var(--text-muted); line-height:1.8;">
+          <li>Deliver structured and rigorous curricula in alignment with global IT standards.</li>
+          <li>Foster an environment of innovation, practical application, and independent coding.</li>
+          <li>Promote moral and ethical values alongside technical skills.</li>
+          <li>Encourage industry-academia collaboration for continuous skill enhancement.</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const mobileToggle = document.getElementById('themeToggleMobile');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+          const themeToggle = document.getElementById('themeToggle');
+          if(themeToggle) themeToggle.click();
+        });
+    }
+  </script>
+</body>
+</html>
